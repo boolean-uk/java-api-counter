@@ -20,9 +20,7 @@ public class CustomCounterController {
 
     @GetMapping("/{name}")
     public int getOrCreateCounter(@PathVariable(name = "name") String name){
-        if(counters.containsKey(name)) return counters.get(name);
-
-        counters.put(name, 0);
+        counters.putIfAbsent(name, 0);
         return counters.get(name);
     }
 
