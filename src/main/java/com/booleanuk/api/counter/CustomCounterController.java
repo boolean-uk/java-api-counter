@@ -26,12 +26,11 @@ public class CustomCounterController {
 
     @GetMapping("/{name}/increment")
     public int incrementCounter(@PathVariable(name = "name") String name){
+        counters.putIfAbsent(name, 0);
+
         Integer val = counters.get(name);
-        if(val == null){
-            counters.put(name, 1);
-            return 1;
-        }
         counters.replace(name, ++val);
         return val;
+
     }
 }
