@@ -27,10 +27,16 @@ public class CustomCounterController {
     @GetMapping("/{name}/increment")
     public int incrementCounter(@PathVariable(name = "name") String name){
         counters.putIfAbsent(name, 0);
-
         Integer val = counters.get(name);
         counters.replace(name, ++val);
         return val;
 
+    }
+    @GetMapping("/{name}/decrement")
+    public int decrementCounter(@PathVariable(name = "name") String name){
+        counters.putIfAbsent(name, 0);
+        Integer val = counters.get(name);
+        counters.replace(name, --val);
+        return val;
     }
 }

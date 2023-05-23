@@ -21,6 +21,10 @@ public class CounterController {
     public int incrementCounter(){
         return ++counter;
     }
+    @GetMapping("/decrement")
+    public int decrementCounter(){
+        return --counter;
+    }
 
 
 }
