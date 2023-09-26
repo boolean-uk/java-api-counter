@@ -12,7 +12,7 @@ import java.util.Map;
 @RequestMapping("/counter")
 public class CounterController {
     public int counter = 0;
-//    private Map<String, Integer> indexValue = new HashMap<>();
+    private Map<String, Integer> indexValue = new HashMap<>();
 
     @GetMapping("/increment")
     public int increment()
@@ -28,36 +28,26 @@ public class CounterController {
         return counter;
     }
 
-//    @GetMapping("/custom/{index}")
-//    public int customIndex(@PathVariable(name = "index") String index) {
-//        if (indexValue.containsKey(index)) {
-//            int newValue = indexValue.get(index);
-//            newValue++;
-//            indexValue.put(index, newValue);
-//            int returnValue = indexValue.get(index);
-//
-//            return indexValue.get(index);
-//        } else {
-//            indexValue.put(index, 0);
-//
-//            return indexValue.get(index);
-//        }
-//    }
-//
-//    @GetMapping("/custom/{index}/increment")
-//    public int customIndexIncrement(@PathVariable(name = "index") String index)
-//    {
-//        int newValue = indexValue.getOrDefault(index, 0) + 1;
-//        indexValue.put(index, newValue);
-//        return newValue;
-//    }
-//
-//    @GetMapping("/custom/{index}/decrement")
-//    public int customIndexDecrement(@PathVariable(name = "index") String index)
-//    {
-//        int newValue = indexValue.getOrDefault(index, 0) - 1;
-//        indexValue.put(index, newValue);
-//        return newValue;
-//    }
+    @GetMapping("/custom/{index}")
+    public int customIndex(@PathVariable(name = "index") String index) {
+        return indexValue.computeIfAbsent(index, key -> 0);
+    }
+
+
+    @GetMapping("/custom/{index}/increment")
+    public int customIndexIncrement(@PathVariable(name = "index") String index)
+    {
+        int newValue = indexValue.getOrDefault(index, 0) + 1;
+        indexValue.put(index, newValue);
+        return newValue;
+    }
+
+    @GetMapping("/custom/{index}/decrement")
+    public int customIndexDecrement(@PathVariable(name = "index") String index)
+    {
+        int newValue = indexValue.getOrDefault(index, 0) - 1;
+        indexValue.put(index, newValue);
+        return newValue;
+    }
 
 }
