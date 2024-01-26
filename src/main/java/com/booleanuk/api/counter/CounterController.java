@@ -37,10 +37,9 @@ public class CounterController {
 
     @GetMapping("custom/{name}")
     public int getCustomCounter(@PathVariable String name) {
-        if(this.customCounters.containsKey(name)) {
-            return this.customCounters.get(name);
+        if(!this.customCounters.containsKey(name)) {
+            this.customCounters.put(name, 0);
         }
-        this.customCounters.put(name, 0);
         return this.customCounters.get(name);
     }
 
@@ -48,9 +47,9 @@ public class CounterController {
     public int incrementCounter(@PathVariable String name) {
         if(this.customCounters.containsKey(name)) {
             this.customCounters.replace(name, this.customCounters.get(name) + 1);
-            return this.customCounters.get(name);
+        } else {
+            this.customCounters.put(name, 1);
         }
-        this.customCounters.put(name, 1);
         return this.customCounters.get(name);
     }
 
@@ -58,9 +57,9 @@ public class CounterController {
     public int decrementCounter(@PathVariable String name) {
         if(this.customCounters.containsKey(name)) {
             this.customCounters.replace(name, this.customCounters.get(name) - 1);
-            return this.customCounters.get(name);
+        } else {
+            this.customCounters.put(name, -1);
         }
-        this.customCounters.put(name, -1);
         return this.customCounters.get(name);
     }
 }
