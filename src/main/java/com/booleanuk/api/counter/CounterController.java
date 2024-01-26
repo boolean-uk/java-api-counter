@@ -42,9 +42,7 @@ public class CounterController {
     @GetMapping("custom/{name}")
     public int getCustomCounter(@PathVariable String name)
     {
-        if(this.customCounters.containsKey(name)) {
-        }
-        else {
+        if(!this.customCounters.containsKey(name)) {
             this.customCounters.put(name, 0);
         }
         return this.customCounters.get(name);
