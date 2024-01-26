@@ -19,4 +19,16 @@ public class CounterController {
         return this.counter;
     }
 
+    @GetMapping("increment")
+    public int increase(){
+        this.counter +=1;
+        return this.counter;
+    }
+
+    @GetMapping("decrement")
+    public int decrease(){
+        this.counter -=1;
+        return this.counter;
+    }
+
 }
