@@ -10,11 +10,6 @@ public class CounterController {
 
     private int counter;
 
-    public CounterController() {
-        this.counter = 0;
-
-    }
-
     @GetMapping
     public String getCounter() {
         return "<h1> counter: " + this.counter + "<h1>";
