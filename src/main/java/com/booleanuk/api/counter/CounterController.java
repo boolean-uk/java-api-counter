@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CounterController {
     private int number;
 
-    public CounterController() {
-        number = 0;
+    @GetMapping
+    public int getNumber() {
+        return this.number;
     }
 
     @GetMapping("/increment")
