@@ -23,4 +23,10 @@ public class CounterController {
         this.counter++;
         return this.counter;
     }
+
+    @GetMapping("/decrement")
+    public int getCounterDecrement() {
+        this.counter--;
+        return this.counter;
+    }
 }
