@@ -17,4 +17,10 @@ public class CounterController {
     public int getCounter() {
         return this.counter;
     }
+
+    @GetMapping("/increment")
+    public int getCounterIncrement() {
+        this.counter++;
+        return this.counter;
+    }
 }
