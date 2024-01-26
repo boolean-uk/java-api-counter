@@ -54,4 +54,14 @@ public class CounterController {
         this.counterMap.put(name, 1);
         return 1;
     }
+
+    @GetMapping("custom/{name}/increment")
+    public int getCustomCounterDecrement(@PathVariable String name) {
+        if (this.counterMap.containsKey(name)) {
+            this.counterMap.put(name, this.counterMap.get(name)-1);
+            return this.counterMap.get(name);
+        }
+        this.counterMap.put(name, -1);
+        return -1;
+    }
 }
