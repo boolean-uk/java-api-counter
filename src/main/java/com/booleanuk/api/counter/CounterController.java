@@ -35,7 +35,6 @@ public class CounterController {
             this.counters.put(name,0);
         }
         return this.counters.get(name);
-
     }
 
     @GetMapping("/custom/{name}/increment")
@@ -43,10 +42,8 @@ public class CounterController {
         int countCustom = 1;
         if (this.counters.containsKey(name)){
             countCustom = this.counters.get(name) + 1;
-
         }
         this.counters.put(name, countCustom);
-
         return countCustom;
     }
     @GetMapping("/custom/{name}/decrement")
@@ -56,7 +53,6 @@ public class CounterController {
             countCustom = this.counters.get(name) - 1;
         }
         this.counters.put(name, countCustom);
-
         return countCustom;
     }
 }
