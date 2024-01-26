@@ -42,6 +42,16 @@ public class CounterController {
             return this.counterMap.get(name);
         }
         this.counterMap.put(name, 0);
-        return -1;
+        return 0;
+    }
+
+    @GetMapping("custom/{name}/increment")
+    public int getCustomCounterIncrement(@PathVariable String name) {
+        if (this.counterMap.containsKey(name)) {
+            this.counterMap.put(name, this.counterMap.get(name)+1);
+            return this.counterMap.get(name);
+        }
+        this.counterMap.put(name, 1);
+        return 1;
     }
 }
