@@ -42,4 +42,16 @@ public class CounterController {
         namesAndNumbers.put(name, 0);
         return 0;
     }
+
+    @GetMapping("/custom/{name}/increment")
+    public int incrementAndGetNameNumber(@PathVariable String name) {
+        if(namesAndNumbers.containsKey(name)) {
+            int value = namesAndNumbers.get(name);
+            value++;
+            namesAndNumbers.put(name, value);
+            return value;
+        }
+        namesAndNumbers.put(name, 1);
+        return 1;
+    }
 }
