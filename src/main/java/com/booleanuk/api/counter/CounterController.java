@@ -54,4 +54,16 @@ public class CounterController {
         namesAndNumbers.put(name, 1);
         return 1;
     }
+
+    @GetMapping("/custom/{name}/decrement")
+    public int decrementAndGetNameNumber(@PathVariable String name) {
+        if(namesAndNumbers.containsKey(name)) {
+            int value = namesAndNumbers.get(name);
+            value--;
+            namesAndNumbers.put(name, value);
+            return value;
+        }
+        namesAndNumbers.put(name, -1);
+        return -1;
+    }
 }
