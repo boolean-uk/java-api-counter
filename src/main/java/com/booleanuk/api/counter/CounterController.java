@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/counter")
 public class CounterController {
-    //private int counter;
+
     private Counter counter;
     private ArrayList<Counter> counterList;
 
