@@ -28,4 +28,22 @@ class CountControllerTest{
 		int res = this.c.getDecrease();
 		Assertions.assertEquals(-1, res);
 	}
+
+	@Test
+	void shouldGetCustomCount(){
+		int res = this.c.getCustomCount("nvim rocks");
+		Assertions.assertEquals(0, res);
+	}
+
+	@Test
+	void shouldGetCustomIncrease(){
+		int res = this.c.getCustomIncrease("nvim rocks");
+		Assertions.assertEquals(1, res);
+	}
+
+	@Test
+	void shouldGetCustomDecrease(){
+		int res = this.c.getCustomDecrease("nvim rocks");
+		Assertions.assertEquals(-1, res);
+	}
 }
