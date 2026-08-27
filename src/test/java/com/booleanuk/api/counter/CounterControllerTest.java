@@ -46,4 +46,5 @@ class CountControllerTest{
 		int res = this.c.getCustomDecrease("nvim rocks");
 		Assertions.assertEquals(-1, res);
 	}
+
 }
